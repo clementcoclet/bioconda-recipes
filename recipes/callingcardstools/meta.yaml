@@ -1,5 +1,5 @@
 {% set name = "callingcardstools" %}
-{% set version = "1.6" %}
+{% set version = "1.7.2" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 2506c0e788b8bfa4c715ebca012c48197e6d892c66fbbe2bd39472175de86994
+  sha256: 6e7ab8ca8ec454c916a67655940e5602300f2b2d0cefaa98462d8ef728a179cd
 
 build:
   noarch: python
