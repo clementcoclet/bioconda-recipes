@@ -1,6 +1,6 @@
 {% set name = "MONSDA" %}
-{% set version = "1.2.7" %}
-{% set sha256 = "6a3b15a4c5eb3ab74d7bad0313cfbc59bb7af22b02994de38c6440a0e0071cba" %}
+{% set version = "1.4.0" %}
+{% set sha256 = "e5865588919448057b444d17f185dd4fe969b9bd4bd9ef6206f7fa7f4066495c" %}
 
 package:
   name: "{{ name|lower }}"

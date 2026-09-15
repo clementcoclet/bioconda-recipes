@@ -1,6 +1,6 @@
 {% set name = "tb-profiler" %}
-{% set version = "6.2.1" %}
-{% set sha256 = "11b4637a37be6fe501aa649ed8598c96e2043f2fbe0e6cf13e9cbf0b9ad8420b" %}
+{% set version = "6.7.0" %}
+{% set sha256 = "78beb6e220a957561b113384b53828e9c8804fd1b43a5ef61d79a962990b9d7c" %}
 
 package:
   name: {{name}}
@@ -19,24 +19,26 @@ build:
 requirements:
   host:
     - python >=3.8
+    - setuptools
     - pip
-    - gatk4
-    - samtools >=1.10
     - bwa
-    - snpeff >=5.0
+    - pathogen-profiler =5.2.1
+    - pyyaml
+    - jinja2
+    - docxtpl
+    - filelock
   run:
     - python >=3.8
     - git
     - jinja2
-    - pathogen-profiler =4.2.0
+    - pathogen-profiler =5.2.1
     - filelock
     - docxtpl
-    - iqtree
-    - usher
     - joblib
     - tqdm
     - pysam
     - rich-argparse
+    - pyyaml
 
 test:
   imports:

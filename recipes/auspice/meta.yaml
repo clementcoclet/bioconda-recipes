@@ -1,52 +1,59 @@
-{% set version = "2.54.1" %}
+{% set version = "3.0.0" %}
+{% set name = "auspice" %}
 
 package:
-  name: auspice
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://registry.npmjs.org/auspice/-/auspice-{{ version }}.tgz
-  sha256: 67533ac3545089f200ef44598ab12d4a937b7018cc8c4c192e0516ab6081731b
+  url: https://registry.npmjs.org/{{ name }}/-/{{ name }}-{{ version }}.tgz
+  sha256: 086de996ebdb93f14ae92267653f71102e5ac65274f02222a11c8b20548c849f
 
 build:
-  number: 1
+  number: 0
   run_exports:
-    - {{ pin_subpackage("auspice", max_pin="x.x") }}
+    - {{ pin_subpackage(name, max_pin="x") }}
 
 requirements:
   build:
     # Auspice is JavaScript, but transitive dependencies have C components that
     # vary across platforms.
-    - "{{ compiler('c') }}"
-    - "{{ compiler('cxx') }}"
-    - nodejs 16.*|18.*|20.*
-    - python *
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
+    - nodejs 20.*|22.*|24.*
+    - python
     - pkg-config
     - yarn 1.*
   host:
-    - icu
+    # Restrict ICU to linux-aarch64 so other platforms avoid inheriting its run_exports pin.
+    - icu  # [linux and aarch64]
   run:
-    - nodejs 16.*|18.*|20.*
+    - nodejs 20.*|22.*|24.*
 
 test:
   commands:
     - auspice --help
+    - auspice -v
 
 about:
-  home: https://docs.nextstrain.org/projects/auspice/
-  doc_url: https://docs.nextstrain.org/projects/auspice/
-  dev_url: https://github.com/nextstrain/auspice
-  summary: Auspice is an open-source interactive tool for visualising phylogenomic data
-  license: AGPL-3.0-only
-  license_file: LICENSE.txt
+  home: "https://github.com/nextstrain/auspice"
+  doc_url: "https://docs.nextstrain.org/projects/auspice"
+  dev_url: "https://github.com/nextstrain/auspice"
+  summary: "Auspice is an open-source interactive tool for visualising phylogenomic data."
+  license: "AGPL-3.0-only"
+  license_file: "LICENSE.txt"
   license_family: AGPL
 
 extra:
+  identifiers:
+    # Generic Nextstrain paper, for lack of specific Auspice one
+    - doi:10.1093/bioinformatics/bty407
   additional-platforms:
     - linux-aarch64
+    - osx-arm64
   recipe-maintainers:
     - jameshadfield
     - victorlin
-    - tsibley
     - huddlej
     - corneliusroemer

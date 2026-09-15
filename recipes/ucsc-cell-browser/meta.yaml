@@ -1,4 +1,4 @@
-{% set version = '1.2.6' %}
+{% set version = '1.2.20' %}
 {% set name = "cellbrowser" %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: "1a088c7ccfdd8300d59955b2b9c9e2633c973dad9fb90006f6b726aed0354877"
+  sha256: "8435c4ed557524de2913a5341f069581d5b35a829d1d07c53688742ac7d04cb7"
 
 build:
   number: 0

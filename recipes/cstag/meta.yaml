@@ -1,5 +1,5 @@
 {% set name = "cstag" %}
-{% set version = "1.0.5" %}
+{% set version = "1.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cstag-{{ version }}.tar.gz
-  sha256: 69aeb279da6143a8f7b9b42a92ae1978f752890c8d475c953077c09ce918774b
+  sha256: d88b6c1e72a6cbef7eac69d3dcc1a18ba85b2b5fc569fa4050bfff52a638bcb5
 
 build:
   noarch: python
@@ -18,12 +18,12 @@ build:
 
 requirements:
   host:
-    - python >=3.7,<4.0
+    - python >=3.8,<4.0
     - poetry-core >=1.0.0
     - pip
   run:
-    - python >=3.7.0,<4.0.0
-    - weasyprint >=52.5
+    - python >=3.8.0,<4.0.0
+    - matplotlib-base >=3.7,<4.0
 
 test:
   imports:

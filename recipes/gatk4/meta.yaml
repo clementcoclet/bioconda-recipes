@@ -1,6 +1,6 @@
 {% set name = "GATK4" %}
-{% set version = "4.5.0.0" %}
-{% set sha256 = "dc1a4471e8bb566397db9894ca18acbf8f40f3fc312c8fad9a8c5390c218e916" %}
+{% set version = "4.7.0.0" %}
+{% set sha256 = "d093d2693b1626361a413ca59d6d4a0bf968717f280a8fd9ce060b25eb2ed1db" %}
 
 package:
   name: {{ name|lower }}
@@ -14,25 +14,25 @@ build:
   noarch: generic
   number: 0
   run_exports:
-     - {{ pin_subpackage('gatk4', max_pin="x") }}
+     - {{ pin_subpackage('gatk4-main', max_pin="x") }}
 
 requirements:
   host:
-    - r-base =3.6
+    - r-base =4.3.1
     - r-gplots
     - r-ggplot2
     - r-gsalib
     - r-reshape
-    - gcnvkernel =0.8
+    - gcnvkernel =0.9
   run:
-    - openjdk >=17,<18
+    - openjdk =17
     - python
-    - r-base =3.6
+    - r-base =4.3.1
     - r-gplots
     - r-ggplot2
     - r-gsalib
     - r-reshape
-    - gcnvkernel =0.8
+    - gcnvkernel =0.9
 
 test:
   commands:
@@ -42,11 +42,11 @@ test:
     - gatk DetermineGermlineContigPloidy --help
 
 outputs:
-  - name: gatk4
+  - name: gatk4-main
     script: build_main.sh
     requirements:
       run:
-        - openjdk >=17,<18
+        - openjdk =17
         - python
     test:
       commands:
@@ -56,13 +56,11 @@ outputs:
         - gatk DetermineGermlineContigPloidy --help
   - name: gatk4-spark
     script: build_spark.sh
-    build:
-      noarch: generic
     requirements:
       run:
-        - openjdk >=17,<18
+        - openjdk =17
         - python
-        - {{ pin_subpackage("gatk4", exact=True) }}
+        - {{ pin_subpackage("gatk4-main", exact=True) }}
     test:
       commands:
         - gatk -h

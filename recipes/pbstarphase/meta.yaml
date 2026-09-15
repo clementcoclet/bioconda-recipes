@@ -1,6 +1,6 @@
 {% set name = "pbstarphase" %}
-{% set version = "0.11.1" %}
-{% set sha256 = "49d5290663d21f2b7a5539a28288b7f84b31e621b8316ef31ee5b1ced5d19dc4" %}
+{% set version = "2.2.0" %}
+{% set sha256 = "a620925e1e40df0b3be80c66cef76c8963d471350a219800590fb0da3bbe39c4" %}
 
 package:
   name: {{ name }}
